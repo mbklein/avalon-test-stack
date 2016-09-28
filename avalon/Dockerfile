@@ -3,7 +3,8 @@ MAINTAINER  Michael B. Klein <mbklein@gmail.com>
 ENV         DEBIAN_FRONTEND=noninteractive
 ADD         jessie-backports.list /etc/apt/sources.list.d/jessie-backports.list
 RUN         apt-get update
-RUN         apt-get install -y mediainfo sudo ffmpeg nodejs libsqlite3-dev git build-essential
+RUN         apt-get install -y mediainfo sudo ffmpeg nodejs libsqlite3-dev git build-essential lsof
+RUN         ln -s `which lsof` /usr/sbin/lsof
 RUN         useradd -G sudo -d /home/coder -m -p '' coder
 USER        coder
 WORKDIR     /home/coder
