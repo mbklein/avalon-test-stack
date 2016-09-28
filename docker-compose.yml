@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  fedora:
+    image: mbklein/hydra:fedora
+    build: 
+      context: ./fedora
+      args:
+        - FEDORA_VERSION
+    ports:
+      - "$FEDORA_PORT:8080"
+  solr:
+    image: mbklein/hydra:solr
+    build: 
+      context: ./solr
+    ports:
+      - "$SOLR_PORT:8983"
+  avalon:
+    image: mbklein/avalon:test
+    build:
+      context: ./avalon
